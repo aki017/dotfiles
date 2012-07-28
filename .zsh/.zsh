@@ -1,0 +1,1 @@
+/Users/aki/dotfiles/.zsh
