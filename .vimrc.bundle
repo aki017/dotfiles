@@ -177,6 +177,7 @@ call vundle#rc()
 
   " markdown
   Bundle 'tpope/vim-markdown'
+  Bundle 'mattn/mkdpreview-vim'
 
   " coffee script
   Bundle 'kchmck/vim-coffee-script'
