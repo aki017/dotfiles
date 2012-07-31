@@ -100,6 +100,8 @@ extract () {
   fi
 }
 alias ex='extract'
+# vimのexモードとかぶる
+alias ext='extract'
 
 alias ev='vi ~/dotfiles/.vimrc*'
 alias be='bundle exec'
