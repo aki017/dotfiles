@@ -106,3 +106,9 @@ alias ext='extract'
 alias ev='vi ~/dotfiles/.vimrc*'
 alias be='bundle exec'
 
+_Z_CMD=j
+source ~/dotfiles/.zsh/z.sh
+precmd() {
+    _z --add "$(pwd -P)"
+}
+

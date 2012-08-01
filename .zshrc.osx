@@ -141,10 +141,6 @@ alias tml='tmux list-window'
 #Android Developper Tools
 export PATH=$PATH:~/android-sdk-macosx/platform-tools/
 
-alias j="autojump"
-if [ -f `brew --prefix`/etc/autojump ]; then
-      . `brew --prefix`/etc/autojump
-fi
 
 #perlbrew
 source ~/perl5/perlbrew/etc/bashrc
