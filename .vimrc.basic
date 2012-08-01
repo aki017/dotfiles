@@ -22,6 +22,10 @@ imap OA <Up>
 imap OB <Down>
 imap OC <Right>
 imap OD <Left>
+imap [OA <Up>
+imap [OB <Down>
+imap [OC <Right>
+imap [OD <Left>
 
 " OSのクリップボードを使用する
 set clipboard+=unnamed
