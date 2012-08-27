@@ -195,6 +195,8 @@ setopt brace_ccl
 # 補完キー（Tab,  Ctrl+I) を連打するだけで順に補完候補を自動で補完する
 setopt auto_menu
 
+#濁点とか対策
+setopt COMBINING_CHARS
 # sudoも補完の対象
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
@@ -477,7 +479,7 @@ dumb)
 esac
 
 
-
+export GREP_OPTIONS='--color=auto'
 export EDITOR=vim
 export PATH=$PATH:$HOME/local/bin:/usr/local/git/bin
 export PATH=$PATH:$HOME/dotfiles/bin

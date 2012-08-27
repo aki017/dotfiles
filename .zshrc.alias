@@ -106,9 +106,14 @@ alias ext='extract'
 alias ev='vi ~/dotfiles/.vimrc*'
 alias be='bundle exec'
 
+# j
 _Z_CMD=j
-source ~/dotfiles/.zsh/z.sh
-precmd() {
-    _z --add "$(pwd -P)"
-}
+ source `brew --prefix`/etc/profile.d/z.sh
+ function precmd () {
+ j --add "$(pwd -P)"
+ }
 
+
+
+#oneliner
+alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
