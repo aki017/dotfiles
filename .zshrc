@@ -109,42 +109,35 @@ case ${UID} in
       return 0
     }
 
-    # git のブランチ名 *と作業状態* を zsh の右プロンプトに表示＋ status に応じて色もつけてみた - Yarukidenized:ヤルキデナイズド :
-    # http://d.hatena.ne.jp/uasi/20091025/1256458798
-    autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-
+    ## git のブランチ名 *と作業状態* を zsh の右プロンプトに表示＋ status に応じて色もつけてみた - Yarukidenized:ヤルキデナイズド :
+    ## http://d.hatena.ne.jp/uasi/20091025/1256458798
+    #http://qiita.com/items/325cffc755fc1ff91928
     function rprompt-git-current-branch {
-      local name st color gitdir action pushed
-      if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-              return
-      fi
+    local name st color gitdir action pushed
+    if [[ "$PWD" =~ '/¥.git(/.*)?$' ]]; then
+        return
+    fi
+    name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+    if [[ -z $name ]]; then
+        return
+    fi
 
-      name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-      if [[ -z $name ]]; then
-              return
-      fi
+    gitdir=`git rev-parse --git-dir 2> /dev/null`
+    action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+    pushed="`_git_not_pushed`"
 
-      gitdir=`git rev-parse --git-dir 2> /dev/null`
-      action=`VCS_INFO_git_getaction "$gitdir"` && action="|$action"
-      pushed="`_git_not_pushed`"
-
-      st=`git status 2> /dev/null`
-      if [[ "$st" =~ "(?m)^nothing to" ]]; then
+    st=`git status 2> /dev/null`
+    if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
         color=%F{green}
-      elif [[ "$st" =~ "(?m)^nothing added" ]]; then
+    elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
         color=%F{yellow}
-      elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
+    elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
         color=%B%F{red}
-      else
+    else
         color=%F{red}
-      fi
-
-      echo "[$color$name$action$pushed%f%b]"
-    }
-
-    # PCRE 互換の正規表現を使う
-    setopt re_match_pcre
-
+    fi
+    echo "[$color$name$action$pushed%f%b]"
+}
     RPROMPT='`rprompt-git-current-branch`${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
     ;;

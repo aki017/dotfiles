@@ -4,6 +4,7 @@ DOT_FILES=( .zsh .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .gdbinit .gitconfig
 
 for file in ${DOT_FILES[@]}
 do
+    rm    $HOME/$file
     ln -s $HOME/dotfiles/$file $HOME/$file
 #    rm $HOME/$file
 done
