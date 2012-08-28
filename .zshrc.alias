@@ -108,10 +108,10 @@ alias be='bundle exec'
 
 # j
 _Z_CMD=j
- source `brew --prefix`/etc/profile.d/z.sh
- function precmd () {
- j --add "$(pwd -P)"
- }
+source ~/dotfiles/bin/z.sh
+function precmd () {
+    _z --add "$(pwd -P)"
+}
 
 
 
