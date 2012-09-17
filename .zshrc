@@ -43,25 +43,10 @@ case ${UID} in
     #
     # Prompt
     #
-    PROMPT='%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}'
-    RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
-
-    #
-    # Vi入力モードでPROMPTの色を変える
-    # http://memo.officebrook.net/20090226.html
-    function zle-line-init zle-keymap-select {
-      case $KEYMAP in
-        vicmd)
-        PROMPT="%{$fg_bold[cyan]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
-        ;;
-        main|viins)
-        PROMPT="%{$fg_bold[blue]%}${USER}@%m ${RESET}${WHITE}$ ${RESET}"
-        ;;
-      esac
-      zle reset-prompt
-    }
-    zle -N zle-line-init
-    zle -N zle-keymap-select
+    #PROMPT='%{$fg_bold[blue]%}${USER}  @%m ${RESET}${WHITE}$ ${RESET}'
+    PROMPT='%{$fg[white]$bg[blue]%} %m %{$fg[blue]$bg[white]%}⮀ ${USER} ${RESET}${WHITE}⮀ ${RESET}'
+    #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
+    #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
 
     # Show git branch when you are in git repository
     # http://d.hatena.ne.jp/mollifier/20100906/p1
@@ -128,17 +113,22 @@ case ${UID} in
 
     st=`git status 2> /dev/null`
     if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-        color=%F{green}
+        color=green
     elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-        color=%F{yellow}
+        color=yellow
     elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-        color=%B%F{red}
+        color=red
     else
-        color=%F{red}
+        color=red
     fi
-    echo "[$color$name$action$pushed%f%b]"
+
+    echo "%{$bg[$color]%} $name$action$pushed"
 }
-    RPROMPT='`rprompt-git-current-branch`${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
+
+# PCRE 互換の正規表現を使う
+setopt re_match_pcre
+
+RPROMPT='`rprompt-git-current-branch`%{$fg[white]%} ⮂%{$bg[white]$fg[blue]%}%(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
     ;;
 esac
