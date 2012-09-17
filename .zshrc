@@ -125,8 +125,6 @@ case ${UID} in
     echo "%{$bg[$color]%} $name$action$pushed"
 }
 
-# PCRE 互換の正規表現を使う
-setopt re_match_pcre
 
 RPROMPT='`rprompt-git-current-branch`%{$fg[white]%} ⮂%{$bg[white]$fg[blue]%}%(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
