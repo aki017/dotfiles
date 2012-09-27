@@ -115,7 +115,7 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 let g:neocomplcache_include_paths = {
   \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
   \ 'c'    : '.,/usr/include',
-  \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+  \ 'ruby' : '.',
   \ }
 "インクルード文のパターンを指定
 let g:neocomplcache_include_patterns = {
