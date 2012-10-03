@@ -8,7 +8,9 @@ do
     ln -s $HOME/dotfiles/$file $HOME/$file
     mkdir -p ~/.vim/bundle
     cd ~/.vim/bundle
-    git clone git://github.com/gmarik/vundle.git 
+    git clone https://github.com/gmarik/vundle.git 
+    touch ~/.z
+    touch ~/.cdd
 #    rm $HOME/$file
 done
 

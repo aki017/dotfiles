@@ -126,7 +126,7 @@ call vundle#rc()
   Bundle 'eregex.vim'
 
   " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
-  Bundle 'tyru/open-browser.vim'
+  " Bundle 'tyru/open-browser.vim'
 
 " }}}
 
@@ -180,13 +180,13 @@ call vundle#rc()
   Bundle 'mattn/mkdpreview-vim'
   Bundle 'mattn/webapi-vim'
   " coffee script
-  Bundle 'kchmck/vim-coffee-script'
+  " Bundle 'kchmck/vim-coffee-script'
 
   " python
   Bundle 'yuroyoro/vim-python'
 
   " scala
-  Bundle 'yuroyoro/vim-scala'
+  " Bundle 'yuroyoro/vim-scala'
 
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
   Bundle 'scrooloose/syntastic'
@@ -244,16 +244,19 @@ call vundle#rc()
   Bundle 'yuroyoro/vimdoc_ja'
 
   " vim上のtwitter client
-  Bundle 'TwitVim'
+  " Bundle 'TwitVim'
 
   " Lingrのclient
-  Bundle 'tsukkee/lingr-vim'
+  " Bundle 'tsukkee/lingr-vim'
 
   " vimからGit操作する
   Bundle 'tpope/vim-fugitive'
 
   " ステータスラインをカッコよくする
   Bundle 'Lokaltog/vim-powerline'
+
+  " sudo
+  Bundle "sudo.vim"
 
 
 " }}}
