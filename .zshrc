@@ -205,7 +205,7 @@ setopt extended_glob
 #   to end of it)
 #
 #
-#bindkey -v
+bindkey -e
 
 # historical backward/forward search with linehead string binded to ^P/^N
 #
