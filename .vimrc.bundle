@@ -94,7 +94,7 @@ call vundle#rc()
   Bundle 'Shougo/neocomplcache'
 
   " neocomplcacheのsinpet補完
-  Bundle 'Shougo/neocomplcache-snippets-complete'
+  Bundle 'Shougo/neosnippet'
 
   " rubyでrequire先を補完する
   " Bundle 'ujihisa/neco-ruby'
