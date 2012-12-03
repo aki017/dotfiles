@@ -8,26 +8,14 @@ call vundle#rc()
   " NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
   Bundle 'scrooloose/nerdcommenter.git'
 
-  " 自動閉じタグ
-  " Bundle 'yuroyoro/vim-autoclose'
-
-  " -- でメソッドチェーン整形
-  Bundle 'c9s/cascading.vim'
-
   " visually indent guide
   Bundle 'nathanaelkane/vim-indent-guides'
-
-  " XMLとかHTMLとかの編集機能を強化する
-  Bundle 'xmledit'
 
   " Align : 高機能整形・桁揃えプラグイン
   Bundle 'Align'
 
   " フィルタリングと整形
   Bundle 'godlygeek/tabular'
-
-  " マルチバイト対応の整形
-  Bundle 'h1mesuke/vim-alignta'
 
   " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
   Bundle 'YankRing.vim'
@@ -46,9 +34,6 @@ call vundle#rc()
 
   " operator-camelize : camel-caseへの変換
   Bundle 'operator-camelize'
-
-  " operator-replace : yankしたものでreplaceする
-  Bundle 'operator-replace'
 
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
   Bundle 'textobj-user'
@@ -78,17 +63,12 @@ call vundle#rc()
   " 「foo」 or 【bar】などをtext-objectに
   Bundle 'textobj-jabraces'
 
-  " 改造したmonday.vim(git rebase -i とかtrue/falseとか)
-  " Bundle 'yuroyoro/monday'
-
   " <C-a>でtrue/false切替。他色々
   Bundle 'taku-o/vim-toggle'
 
 " }}}
 
 " Completion {{{
-  " 補完 autocomplpop.vim : insertmodeで自動で補完をpopup
-  " Bundle 'AutoComplPop'
 
   " 補完 neocomplcache.vim : 究極のVim的補完環境
   Bundle 'Shougo/neocomplcache'
@@ -96,11 +76,6 @@ call vundle#rc()
   " neocomplcacheのsinpet補完
   Bundle 'Shougo/neocomplcache-snippets-complete'
 
-  " rubyでrequire先を補完する
-  " Bundle 'ujihisa/neco-ruby'
-
-  " A neocomplcache plugin for English, using look command
-  " Bundle 'ujihisa/neco-look'
 " }}}
 
 " Searching/Moving{{{
@@ -163,8 +138,6 @@ call vundle#rc()
 " }}}
 "
 " Syntax {{{
-  " haml
-  Bundle 'haml.zip'
 
   " JavaScript
   Bundle 'JavaScript-syntax'
@@ -231,9 +204,6 @@ call vundle#rc()
   " urilib.vim : vim scriptからURLを扱うライブラリ
   Bundle 'tyru/urilib.vim'
 
-  " ステータスラインに顔文字を表示
-  Bundle 'mattn/hahhah-vim'
-
   " utillity
   Bundle 'L9'
 
@@ -263,9 +233,9 @@ call vundle#rc()
 
 " ColorSchema{{{{
   " color schema 256
-  Bundle 'desert256.vim'
-  Bundle 'mrkn256.vim'
-  Bundle 'tomasr/molokai'
+"  Bundle 'desert256.vim'
+"  Bundle 'mrkn256.vim'
+"  Bundle 'tomasr/molokai'
   Bundle 'yuroyoro/yuroyoro256.vim'
 " }}}
 
