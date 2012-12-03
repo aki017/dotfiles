@@ -3,10 +3,10 @@ This is a set of scripts (segments) for making a nice and dynamic tmux statusbar
 
 The following segments exists for now:
 * LAN & WAN IP addresses.
-* Now Playing for MPD, Spotify (GNU/Linux native or wine, OS X), iTunes (OS X), Rhythmbox, Banshee and Audacious.
-* New mail count for Maildir and Apple Mail.
+* Now Playing for MPD, Spotify (GNU/Linux native or wine, OS X), iTunes (OS X), Rhythmbox, Banshee, MOC, Audacious, Rdio (OS X), cmus and Last.fm (last scrobbled track).
+* New mail count for GMail, Maildir, mbox and Apple Mail.
 * GNU/Linux and Macintosh OS X battery status (uses [richo/dotfiles/bin/battery](https://github.com/richoH/dotfiles/blob/master/bin/battery)).
-* Weather in Celsius, Fahrenheit and Kelvin using Google's weather API.
+* Weather in Celsius, Fahrenheit and Kelvin using Yahoo Weather.
 * System load, cpu usage and uptime.
 * Git, SVN and Mercurial branch in CWD.
 * Date and time.
@@ -14,6 +14,7 @@ The following segments exists for now:
 * tmux info.
 * CWD in pane.
 * Current X keyboard layout.
+* Network download/upload speed.
 
 Check [segments/](https://github.com/erikw/tmux-powerline/tree/master/segments) for more undocumented segments and details.
 
@@ -51,14 +52,16 @@ Requirements for the lib to work are:
 
 * Recent tmux version
 * `bash --version` >= 4.0
-* A patched font. Follow instructions at [Lokaltog/vim-powerline/fontpatcher](https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher).
+* A patched font. Follow instructions at [Lokaltog/vim-powerline/fontpatcher](https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher) or [download](https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts) a new one. However you can use other substitute symbols as well; see `config.sh`.
 
 ## Segment Requirements
 Requirements for some segments. You only need to fullfill the requirements for those segments you want to use.
 
-* WAN IP: curl
-* MPD now playing: [libmpdclient](http://sourceforge.net/projects/musicpd/files/libmpdclient/)
-* xkb_layout: X11, XKB
+* wan_ip.sh, np_lastfm.sh, weather_yahoo.sh: curl, bc
+* np_mpd.sh: [libmpdclient](http://sourceforge.net/projects/musicpd/files/libmpdclient/)
+* xkb_layout.sh: X11, XKB
+* mail_count_gmail.sh: wget.
+* ifstat.sh: ifstat (there is a simpler segment not using ifstat but samples /sys/class/net)
 
 ## OS X specific requirements
 
@@ -90,6 +93,8 @@ $ echo $SHELL
 /usr/local/Cellar/bash/%INSTALLED_VERSION%/bin/bash
 ```
 
+It is [reported](https://github.com/erikw/tmux-powerline/issues/71) that the `grep` tool is outdatted on OS X 10.8 Mountain Lion so you might have to upgrade it using .e.g homebrew since may segments uses grep with these new features.
+
 # Installation
 Just check out the repository with:
 
@@ -112,20 +117,21 @@ set-option -g status-left "#(~/path/to/tmux-powerline/status-left.sh)"
 set-option -g status-right "#(~/path/to/tmux-powerline/status-right.sh)"
 ```
 
-Set the maximum lengths to something that suits your configuration of segments and size of terminal (the maximum segments length will be handled better in the future). Don't forget to change the PLATFORM variable in `config.sh` or your `~/.bashrc` to reflect your operating system of choice.
+Set the maximum lengths to something that suits your configuration of segments and size of terminal (the maximum segments length will be handled better in the future). Segments needs to use different tools or options depending on platform. Currently there is only a distinction between Linux systems and OS X systems. `config.sh` tries to detect what machine your're on with `uname`. If needed you can override this setting with the PLATFORM variable there (or wherever you want to define it).
+
 
 Also I recommend you to use the [tmux-colors-solarized](https://github.com/seebi/tmux-colors-solarized) theme (as well as solarized for [everything else](http://ethanschoonover.com/solarized) :)):
 
 ```bash
 source ~/path/to/tmux-colors-solarized/tmuxcolors.conf
 ```
-Some segments e.g. cwd and cvs_branch needs to find the current working directory of the active pane. To achive this we let tmux save the path each time the bash prompt is displayed. Put this in your `~/.bashrc` or where you define you PS1 variable (I use and source `~/.bash_ps1`):
+Some segments e.g. cwd and cvs_branch needs to find the current working directory of the active pane. To achive this we let tmux save the path each time the shell prompt is displayed. Put the line below in your `~/.bashrc` or where you define you PS1 variable. zsh users can put it in e.g. `~/.zshrc` and may change `PS1` to `PROMPT` (but that's not necessary).
 
 ```bash
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
+PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 ```
 
-You can toggle the visibility of the statusbars by adding the following to you `~/.tmux.conf`:
+You can toggle the visibility of the statusbars by adding the following to your `~/.tmux.conf`:
 
 ```vim
 bind C-[ run '~/path/to/tmux-powerline/mute_statusbar.sh left'		# Mute left statusbar.
@@ -160,6 +166,13 @@ Some segments might not work on your system for various reasons such as missing 
 ```bash
 $ bash -x ~/path/to/failing/segment.sh
 ```
+To see all output even if some segment fails you can set `DEBUG_MODE="true"` in `config.sh`.
+
+## Common problems
+
+### VCS_branch is not updating
+The issue is probably that the update of the current directory in the active pane is not updated correctly. Make sure that your PS1 or PROMPT variable actually contains the line from the installation step above by simply inspecing the output of `echo $PS1`. You might have placed the PS1 line in you shell confugration such that it is overwritten later. The simplest solution is to put it at the very end to make sure that nothing overwrites it. See [issue #52](https://github.com/erikw/tmux-powerline/issues/52).
+
 
 # Hacking
 
