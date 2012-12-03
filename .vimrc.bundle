@@ -74,7 +74,7 @@ call vundle#rc()
   Bundle 'Shougo/neocomplcache'
 
   " neocomplcacheのsinpet補完
-  Bundle 'Shougo/neocomplcache-snippets-complete'
+  Bundle 'Shougo/neosnippet'
 
 " }}}
 

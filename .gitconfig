@@ -15,6 +15,7 @@
 #  autocrlf = true #input                 # CRLFを自動変換
   editor = vim
   quotepath = false
+	pager = lv -c
 [merge]
   tool = vimdiff
 [branch]
