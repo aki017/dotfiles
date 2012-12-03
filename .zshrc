@@ -48,9 +48,6 @@ case ${UID} in
     #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
     #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
 
-    # Show git branch when you are in git repository
-    # http://d.hatena.ne.jp/mollifier/20100906/p1
-
     autoload -Uz add-zsh-hook
     autoload -Uz vcs_info
 
@@ -86,17 +83,15 @@ case ${UID} in
         for x in $(git rev-parse --remotes)
         do
           if [ "$head" = "$x" ]; then
+              echo "true"
             return 0
           fi
         done
-        echo "|?"
+        echo "false"
       fi
       return 0
     }
 
-    ## git のブランチ名 *と作業状態* を zsh の右プロンプトに表示＋ status に応じて色もつけてみた - Yarukidenized:ヤルキデナイズド :
-    ## http://d.hatena.ne.jp/uasi/20091025/1256458798
-    #http://qiita.com/items/325cffc755fc1ff91928
     function rprompt-git-current-branch {
     local name st color gitdir action pushed
     if [[ "$PWD" =~ '/¥.git(/.*)?$' ]]; then
@@ -108,25 +103,24 @@ case ${UID} in
     fi
 
     gitdir=`git rev-parse --git-dir 2> /dev/null`
-    action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+    action=`VCS_INFO_git_getaction "$gitdir"` && action="$action"
     pushed="`_git_not_pushed`"
 
-    st=`git status 2> /dev/null`
-    if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-        color=green
-    elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-        color=yellow
-    elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-        color=red
-    else
-        color=red
-    fi
+    st=$((`git ls-files --modified | wc -l 2> /dev/null`-0))
 
-    echo "%{$bg[$color]%} $name$action$pushed"
+
+    echo -n "%{$fg[cyan]%}⮂%{$bg[cyan]$fg[blue]%} $name "
+    if [[ $st>0 ]]; then
+        echo -n "%{$fg[red]%}⮂%{$bg[red]$fg[white]%} +$st"
+    fi
+    if ! [ `$pushed` ]; then
+        echo -n "%{$fg[red]%}⮂⮀"
+    fi
+    #$action"
 }
 
 
-RPROMPT='`rprompt-git-current-branch`%{$fg[white]%} ⮂%{$bg[white]$fg[blue]%}%(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
+RPROMPT='`rprompt-git-current-branch`%{$fg[white]%}⮂%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
     ;;
 esac
