@@ -8,3 +8,5 @@ noremap ; :
 " :でもexコマンドに入れるようにしておく
 " noremap : ;
 
+
+let g:octopress_path = '~/Dropbox/octopress/'
