@@ -141,6 +141,7 @@ alias tml='tmux list-window'
 #Android Developper Tools
 export PATH=$PATH:~/android-sdk-macosx/platform-tools/
 
+export PATH=$PATH:/usr/local/Cellar/ruby/1.9.3-p327/bin/
 
 #perlbrew
 source ~/perl5/perlbrew/etc/bashrc

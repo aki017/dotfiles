@@ -26,9 +26,6 @@ call vundle#rc()
   " surround.vim : テキストを括弧で囲む／削除する
   Bundle 'tpope/vim-surround'
 
-  " smartchr.vim : ==などの前後を整形
-  Bundle 'smartchr'
-
   " vim-operator-user : 簡単にoperatorを定義できるようにする
   Bundle 'operator-user'
 
