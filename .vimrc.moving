@@ -19,10 +19,10 @@ nmap 9 $
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
 " インサートモードでもhjklで移動（Ctrl押すけどね）
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+" inoremap <C-j> <Down>
+" inoremap <C-k> <Up>
+" inoremap <C-h> <Left>
+" inoremap <C-l> <Right>
 
 "<space>j, <space>kで画面送り
 noremap <Space>j <C-f>
