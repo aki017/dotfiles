@@ -113,7 +113,8 @@ function precmd () {
     _z --add "$(pwd -P)"
 }
 
-
+#server
+alias httpd="python -m SimpleHTTPServer 8080"
 
 #oneliner
 alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"

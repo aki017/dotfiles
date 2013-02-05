@@ -176,8 +176,8 @@ setopt COMBINING_CHARS
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 # 色付きで補完する
-zstyle ':completion:*' list-colors di=34 fi=0
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' list-colors di=34 fi=0
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # 複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
 setopt multios
@@ -666,5 +666,3 @@ esac
 ## local固有設定
 #
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

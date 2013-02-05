@@ -1,5 +1,5 @@
 [user]
-  name = aki
+  name = aki017
   email = aki@aki017.info
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
@@ -15,7 +15,7 @@
 #  autocrlf = true #input                 # CRLFを自動変換
   editor = vim
   quotepath = false
-	pager = lv -c
+  pager = lv -c
 [merge]
   tool = vimdiff
 [branch]

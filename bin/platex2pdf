@@ -1,5 +1,6 @@
 #!/bin/sh
-platex $1
-platex $1
-dvipdfmx ${1%tex}dvi
-open -a Skim.app ${1%tex}pdf
+filename=`eval echo '$'{$#}` 
+platex $@
+platex $@
+dvipdfmx ${filename%tex}dvi
+open -a Skim.app ${filename%tex}pdf
