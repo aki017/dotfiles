@@ -106,13 +106,6 @@ alias ext='extract'
 alias ev='vi ~/dotfiles/.vimrc*'
 alias be='bundle exec'
 
-# j
-_Z_CMD=j
-source ~/dotfiles/bin/z.sh
-function precmd () {
-    _z --add "$(pwd -P)"
-}
-
 #server
 alias httpd="python -m SimpleHTTPServer 8080"
 
