@@ -9,10 +9,10 @@ do
 #    rm $HOME/$file
 done
 
+git submodule update --init
 mkdir -p ~/.vim/bundle
 cd ~/.vim/bundle
 git clone https://github.com/gmarik/vundle.git 
 touch ~/.z
 touch ~/.cdd
 
-git submodule update --init
