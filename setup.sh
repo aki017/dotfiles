@@ -15,3 +15,4 @@ git clone https://github.com/gmarik/vundle.git
 touch ~/.z
 touch ~/.cdd
 
+git submodule update --init
