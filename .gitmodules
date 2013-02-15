@@ -4,3 +4,6 @@
 [submodule "tmux-colors-solarized"]
 	path = tmux-colors-solarized
 	url = git@github.com:seebi/tmux-colors-solarized.git
+[submodule "zsh-vcs-prompt"]
+	path = zsh-vcs-prompt
+	url = git@github.com:yonchu/zsh-vcs-prompt.git

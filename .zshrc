@@ -48,79 +48,59 @@ case ${UID} in
         #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
         #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
 
-        autoload -Uz add-zsh-hook
-        autoload -Uz vcs_info
 
-        zstyle ':vcs_info:*' enable git svn hg bzr
-        zstyle ':vcs_info:*' formats '(%s)-[%b]'
-        zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-        zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
-        zstyle ':vcs_info:bzr:*' use-simple true
+# VCS config
 
-        autoload -Uz is-at-least
-        if is-at-least 4.3.10; then
-            # この check-for-changes が今回の設定するところ
-            zstyle ':vcs_info:git:*' check-for-changes true
-            zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
-            zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
-            zstyle ':vcs_info:git:*' formats '(%s)-[%c%u%b]'
-            zstyle ':vcs_info:git:*' actionformats '(%s)-[%c%u%b|%a]'
-        fi
+ZSH_VCS_PROMPT_GIT_FORMATS=""
+ZSH_VCS_PROMPT_ACTION_GIT_FORMATS=""
+# VCS name
+ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_VCS_FORMATS="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_VCS_ACTION_FORMATS="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
+# Branch name
+ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
+ZSH_VCS_PROMPT_VCS_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
+ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
+# Action
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
+ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
+# Ahead and Behind
+ZSH_VCS_PROMPT_GIT_FORMATS+='#c#d'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#c#d'
+# Staged
+ZSH_VCS_PROMPT_GIT_FORMATS+='#e'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#e'
+# Conflicts
+ZSH_VCS_PROMPT_GIT_FORMATS+='#f'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#f'
+# Unstaged
+ZSH_VCS_PROMPT_GIT_FORMATS+='#g'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#g'
+# Untracked
+ZSH_VCS_PROMPT_GIT_FORMATS+='#h'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#h'
+# Stashed
+ZSH_VCS_PROMPT_GIT_FORMATS+='#i'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#i'
+# Clean
+ZSH_VCS_PROMPT_GIT_FORMATS+='#j'
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#j'
 
-        function _update_vcs_info_msg() {
-        psvar=()
-        LANG=en_US.UTF-8 vcs_info
-        psvar[2]=$(_git_not_pushed)
-        [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-    }
-    add-zsh-hook precmd _update_vcs_info_msg
+## The symbols.
+ZSH_VCS_PROMPT_AHEAD_SIGIL=" %{$fg[white]%}⮂%{$bg[white]$fg[black]%}↑ "
+ZSH_VCS_PROMPT_BEHIND_SIGIL=" %{$fg[white]%}⮂%{$bg[white]$fg[black]%}↓ "
+ZSH_VCS_PROMPT_STAGED_SIGIL=" %{$fg[blue]%}⮂%{$bg[blue]$fg[white]%}● "
+ZSH_VCS_PROMPT_CONFLICTS_SIGIL=" %{$fg[red]%}⮂%{$bg[red]$fg[white]%}✖ "
+ZSH_VCS_PROMPT_UNSTAGED_SIGIL=" %{$fg[red]%}⮂%{$bg[red]$fg[white]%}✚ "
+ZSH_VCS_PROMPT_UNTRACKED_SIGIL=" %{$fg[magenta]%}⮂%{$bg[magenta]$fg[white]%}… "
+ZSH_VCS_PROMPT_STASHED_SIGIL=" %{$fg[blue]%}⮂%{$bg[blue]$fg[white]%}⚑ "
+ZSH_VCS_PROMPT_CLEAN_SIGIL=" %{$fg[green]%}⮂%{$bg[green]$fg[white]%}✔ "
 
-    # show status of git pushed to HEAD in prompt
-    function _git_not_pushed()
-    {
-        if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
-            head="$(git rev-parse HEAD)"
-            for x in $(git rev-parse --remotes)
-            do
-                if [ "$head" = "$x" ]; then
-                    echo "true"
-                    return 0
-                fi
-            done
-            echo "false"
-        fi
-        return 0
-    }
-
-    function rprompt-git-current-branch {
-    local name st color gitdir action pushed
-    if [[ "$PWD" =~ '/¥.git(/.*)?$' ]]; then
-        return
-    fi
-    name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-    if [[ -z $name ]]; then
-        return
-    fi
-
-    gitdir=`git rev-parse --git-dir 2> /dev/null`
-    action=`VCS_INFO_git_getaction "$gitdir"` && action="$action"
-    pushed="`_git_not_pushed`"
-
-    st=$((`git ls-files --modified | wc -l 2> /dev/null`-0))
-
-
-    echo -n "%{$fg[cyan]%}⮂%{$bg[cyan]$fg[blue]%} $name "
-    if [[ $st>0 ]]; then
-        echo -n "%{$fg[red]%}⮂%{$bg[red]$fg[white]%} +$st"
-    fi
-    if ! [ `$pushed` ]; then
-        echo -n "%{$fg[red]%}⮂⮀"
-    fi
-    #$action"
-}
-
-
-RPROMPT='`rprompt-git-current-branch`%{$fg[white]%}⮂%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
+source ~/dotfiles/zsh-vcs-prompt/zshrc.sh
+ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+RPROMPT='$(vcs_super_info) %{$fg[white]%}⮂%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
 ;;
 esac
@@ -332,7 +312,7 @@ e_RED=`echo -e "¥033[1;31m"`
 e_BLUE=`echo -e "¥033[1;36m"`
 
 function make() {
-LANG=C command make "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+LANG=C command make -j4 "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
 }
 function cwaf() {
 LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
