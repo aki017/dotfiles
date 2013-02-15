@@ -6,11 +6,12 @@ for file in ${DOT_FILES[@]}
 do
     rm    $HOME/$file
     ln -s $HOME/dotfiles/$file $HOME/$file
-    mkdir -p ~/.vim/bundle
-    cd ~/.vim/bundle
-    git clone https://github.com/gmarik/vundle.git 
-    touch ~/.z
-    touch ~/.cdd
 #    rm $HOME/$file
 done
+
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+git clone https://github.com/gmarik/vundle.git 
+touch ~/.z
+touch ~/.cdd
 
