@@ -1,18 +1,25 @@
 #!/bin/bash
 
- DOT_FILES=( .zsh .zshrc .zshrc.alias .zshrc.linux .zshrc.osx .gdbinit .gitconfig .gitignore .inputrc .screenrc .vimrc .vrapperrc .tmux.conf .tmux-powerlinerc .dir_colors)
+ VIM_FILES=( .vimrc )
+ TMUX_FILES=( .tmux.conf .tmux-powerlinerc )
+ ZSH_FILES=( .zshrc )
+ OTHER_FILES=( .gdbinit .gitconfig .gitignore .inputrc .screenrc .dir_colors)
+ DOT_FILES=( "${VIM_FILES[@]}" "${TMUX_FILES[@]}" "${ZSH_FILES[@]}" "${OTHER_FILES[@]}" )
 
 for file in ${DOT_FILES[@]}
 do
-    rm    $HOME/$file
+    if [ -e $HOME/$file ]; then
+        mv $HOME/$file $HOME/$file.old
+    #    rm $HOME/$file
+    fi
     ln -s $HOME/dotfiles/$file $HOME/$file
-#    rm $HOME/$file
 done
 
 git submodule update --init
-mkdir -p ~/.vim/bundle
-cd ~/.vim/bundle
-git clone https://github.com/gmarik/vundle.git 
+mkdir -p ~/.neobundle
+cd ~/.neobundle
+git clone https://github.com/Shougo/neobundle.vim.git
+vim -s viminit
 touch ~/.z
 touch ~/.cdd
 
