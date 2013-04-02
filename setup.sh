@@ -19,6 +19,7 @@ git submodule update --init
 mkdir -p ~/.neobundle
 cd ~/.neobundle
 git clone https://github.com/Shougo/neobundle.vim.git
+cd ~/dotfiles/
 vim -s viminit
 touch ~/.z
 touch ~/.cdd
