@@ -7,3 +7,6 @@
 [submodule "zsh-vcs-prompt"]
 	path = zsh-vcs-prompt
 	url = https://github.com/yonchu/zsh-vcs-prompt.git
+[submodule "vimrc"]
+	path = vimrc
+	url = https://github.com/aki-017/vimrc.git
