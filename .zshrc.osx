@@ -40,8 +40,8 @@ alias tml='tmux list-window'
 #Android Developper Tools
 export PATH=$PATH:~/android-sdk-macosx/platform-tools
 export PATH=$PATH:~/android-sdk-macosx/tools
-export NDK_ROOT=~/android-ndk-r8d
 export ANDROID_SDK_ROOT=~/android-sdk-macosx
+export ANDROID_NDK_ROOT=~/android-ndk-macosx
 
 #perlbrew
 source ~/perl5/perlbrew/etc/bashrc
