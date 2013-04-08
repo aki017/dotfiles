@@ -114,3 +114,5 @@ alias httpd="python -m SimpleHTTPServer 8080"
 alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
 alias :q="exit"
+
+alias 256="256.pl"
