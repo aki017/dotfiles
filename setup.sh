@@ -24,3 +24,5 @@ vim -s viminit
 touch ~/.z
 touch ~/.cdd
 
+cd ~/dotfiles/nyancat
+make
