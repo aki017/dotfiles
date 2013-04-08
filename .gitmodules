@@ -10,3 +10,6 @@
 [submodule "vimrc"]
 	path = vimrc
 	url = https://github.com/aki-017/vimrc.git
+[submodule "z"]
+	path = z
+	url = https://github.com/rupa/z.git

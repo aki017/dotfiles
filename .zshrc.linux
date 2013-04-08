@@ -29,3 +29,7 @@ export MAVEN_OPTS=-Xmx1024M
 
 export PATH=$PATH:$HOME/.gem/ruby/1.8/bin
 export PATH=/opt/firefox:$PATH
+
+# z
+. $HOME/dotfiles/z/z.sh
+alias j=z
