@@ -116,3 +116,6 @@ alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 
 alias :q="exit"
 
 alias 256="256.pl"
+
+#adb
+alias logcat="adb logcat -C"
