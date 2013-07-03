@@ -40,10 +40,8 @@ alias tma='tmux attach'
 alias tml='tmux list-window'
 
 #Android Developper Tools
-export PATH=$PATH:~/android-sdk-macosx/platform-tools
-export PATH=$PATH:~/android-sdk-macosx/tools
-export ANDROID_SDK_ROOT=~/android-sdk-macosx
-export ANDROID_NDK_ROOT=~/android-ndk-macosx
+export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+export ANDROID_NDK_ROOT=/usr/local/opt/android-ndk
 
 #perlbrew
 source ~/perl5/perlbrew/etc/bashrc

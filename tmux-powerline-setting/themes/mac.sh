@@ -31,12 +31,12 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
         TMUX_POWERLINE_LEFT_STATUS_SEGMENTS+=("hostname 33 0")
     fi
 
-    if [ "$window_width" -ge 250 ]; then
-        TMUX_POWERLINE_LEFT_STATUS_SEGMENTS+=("lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}")
+    if [ "$window_width" -ge 130 ]; then
+        TMUX_POWERLINE_LEFT_STATUS_SEGMENTS+=("lan_ip 24 255")
     fi
 
-    if [ "$window_width" -ge 130 ]; then
-        TMUX_POWERLINE_LEFT_STATUS_SEGMENTS+=("wan_ip 24 255")
+    if [ "$window_width" -ge 200 ]; then
+        TMUX_POWERLINE_LEFT_STATUS_SEGMENTS+=("wan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}")
     fi
 fi
 
