@@ -9,12 +9,9 @@ export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
 
 
-## Backspace key
-#
-bindkey "^?" backward-delete-char
-
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
+REPORTTIME=3
 
 ## Default shell configuration
 # colors enables us to idenfity color by $fg[red].
@@ -338,6 +335,12 @@ autoload predict-on
 ## Command Line Stack [Esc]-[q]
 bindkey -a 'q' push-line
 
+
+bindkey "^?"    backward-delete-char
+bindkey "^H"    backward-delete-char
+bindkey "^[[3~" delete-char
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
 
 ## Alias configuration
 #

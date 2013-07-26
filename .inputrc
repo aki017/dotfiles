@@ -1,6 +1,5 @@
 # viキーバインド
-set editing-mode vi
-set keymap vi-insert
+set editing-mode emacs
 
 # チルダをタブにより展開
 set expand-tilde on

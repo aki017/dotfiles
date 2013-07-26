@@ -22,3 +22,7 @@ samples
 .vim/.netrwhist
 .vimrc_sample
 
+#ruby
+
+vendor/bundler
+.sass-cache
