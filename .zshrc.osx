@@ -44,7 +44,9 @@ export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 export ANDROID_NDK_ROOT=/usr/local/opt/android-ndk
 
 #perlbrew
-source ~/perl5/perlbrew/etc/bashrc
+if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
+. ~/perl5/perlbrew/etc/bashrc
+fi
 
 if [ -f `brew --prefix`/etc/bash_completion.d/_git ]; then
 . `brew --prefix`/etc/bash_completion.d/_git
