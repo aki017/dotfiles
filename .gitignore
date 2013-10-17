@@ -26,3 +26,8 @@ samples
 
 vendor/bundler
 .sass-cache
+
+#idea
+.idea
+*.iml
+*.class
