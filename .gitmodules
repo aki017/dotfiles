@@ -6,10 +6,10 @@
 	url = https://github.com/seebi/tmux-colors-solarized.git
 [submodule "zsh-vcs-prompt"]
 	path = zsh-vcs-prompt
-	url = https://github.com/yonchu/zsh-vcs-prompt.git
+	url = https://github.com/aki017/zsh-vcs-prompt.git
 [submodule "vimrc"]
 	path = vimrc
-	url = https://github.com/aki-017/vimrc.git
+	url = https://github.com/aki017/vimrc.git
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z.git
