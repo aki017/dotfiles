@@ -151,9 +151,13 @@
   generic = G move-last-line
   generic = ^F move-page-down
   generic = ^B move-page-up
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
-[mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+
+[url "github:"]
+  pushInsteadOf = git://github.com/
+  pushInsteadOf = https://github.com/
+[url "git@github.com:"]
+  pushInsteadOf = git://github.com/
+  pushInsteadOf = https://github.com/
+[url "git://github.com/"]
+  insteadOf = https://github.com/
+  pullInsteadOf = git@github.com:

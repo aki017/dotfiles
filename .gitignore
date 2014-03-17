@@ -23,6 +23,6 @@ samples
 .vimrc_sample
 
 #ruby
-
+.bundle
 vendor/bundler
 .sass-cache

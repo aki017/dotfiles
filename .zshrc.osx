@@ -5,14 +5,6 @@ alias pbc='pbcopy'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# vim
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/MacVim "$@"'
-
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"'
-
 # z
 . `brew --prefix`/etc/profile.d/z.sh
 alias j=z
@@ -29,10 +21,6 @@ export MANPATH
 INFOPATH=/usr/local/info:$INFOPATH
 export INFOPATH
 
-# node.js
-export NODE_PATH=/usr/local/lib/node:$PATH
-export PATH=/usr/local/share/npm/bin:$PATH
-
 # tmux
 alias tmux='tmuxx'
 alias tm='tmuxx'
@@ -48,10 +36,11 @@ if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 . ~/perl5/perlbrew/etc/bashrc
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion.d/_git ]; then
-. `brew --prefix`/etc/bash_completion.d/_git
-fi
+#vim
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
+#nvm
+source $(brew --prefix nvm)/nvm.sh
 
 export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
