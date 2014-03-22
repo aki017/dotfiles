@@ -44,3 +44,6 @@ source $(brew --prefix nvm)/nvm.sh
 
 export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+#direnv
+eval "$(direnv hook zsh)"

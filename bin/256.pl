@@ -9,7 +9,6 @@ my $result = GetOptions(
   'verbose|v+' => \$verbose,
   'reset|r' => \$reset
 );
-use YAML;
 
 sub resetTable{
     print "\x1b[0m配色をリセットします\n";
