@@ -40,10 +40,16 @@ fi
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 #nvm
-source $(brew --prefix nvm)/nvm.sh
+if [ -f $(brew --prefix nvm)/nvm.sh ]; then
+. $(brew --prefix nvm)/nvm.sh
+fi
 
 export RBENV_ROOT=/usr/local/opt/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null; then 
+  eval "$(rbenv init -)";
+fi
 
 #direnv
-eval "$(direnv hook zsh)"
+if which direnv > /dev/null; then 
+  eval "$(direnv hook zsh)"
+fi
