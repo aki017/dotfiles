@@ -16,6 +16,7 @@
   editor = vim
   quotepath = false
   pager = lv -c
+  attributesfile = ~/.gitattributes
 [merge]
   tool = vimdiff
 [branch]
