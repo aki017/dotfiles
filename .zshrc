@@ -304,15 +304,15 @@ zle -N self-insert url-quote-magic
 setopt autopushd
 
 # エラーメッセージ本文出力に色付け
-e_normal=`echo -e "\033[0;30m"`
+e_NORMAL=`echo -e "\033[0;37m"`
 e_RED=`echo -e "\033[1;31m"`
 e_BLUE=`echo -e "\033[1;36m"`
 
 function make() {
-LANG=C command make -j4 "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+LANG=C command make -j4 "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_NORMAL@g" -e "s@cannot¥sfind.*@$e_RED&$e_NORMAL@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_NORMAL@g"
 }
 function cwaf() {
-LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_normal@g" -e "s@cannot¥sfind.*@$e_RED&$e_normal@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_normal@g"
+LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_NORMAL@g" -e "s@cannot¥sfind.*@$e_RED&$e_NORMAL@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_NORMAL@g"
 }
 
 ## Completion configuration
