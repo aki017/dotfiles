@@ -144,14 +144,11 @@
   fhp = flow hotfix publish
   fs  = flow support
 
-[http]
-  sslVerify = false
-
 [tig "bind"]
   generic = g move-first-line
   generic = G move-last-line
-  generic = ^F move-page-down
-  generic = ^B move-page-up
+  generic = <Ctrl-F> move-page-down
+  generic = <Ctrl-B> move-page-up
 
 [url "github:"]
   pushInsteadOf = git://github.com/
@@ -159,6 +156,5 @@
 [url "git@github.com:"]
   pushInsteadOf = git://github.com/
   pushInsteadOf = https://github.com/
-[url "git://github.com/"]
-  insteadOf = https://github.com/
-  pullInsteadOf = git@github.com:
+[diff]
+	algorithm = histogram

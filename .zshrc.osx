@@ -53,3 +53,5 @@ fi
 if which direnv > /dev/null; then 
   eval "$(direnv hook zsh)"
 fi
+
+alias c='convert -background "#1c1c1c" -fill "#c3c3c3" -font /Users/aki/Library/Fonts/SourceCodePro-Medium.otf label:@- "$@"'
