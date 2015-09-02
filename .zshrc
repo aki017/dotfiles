@@ -1,22 +1,17 @@
-# users generic .zshrc file for zsh(1)
-
-
-## Environment variable configuration
-#
-# LANG
-# http://curiousabt.blog27.fc2.com/blog-entry-65.html
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
-
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 REPORTTIME=3
 
-## Default shell configuration
-# colors enables us to idenfity color by $fg[red].
 autoload colors
 colors
+export DLH=""
+export DLS=""
+export DRH=""
+export DRS=""
+
 case ${UID} in
     0)
         PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
@@ -26,9 +21,7 @@ case ${UID} in
             PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
         ;;
     *)
-        #
         # Color
-        #
         DEFAULT=$'%{\e[1;0m%}'
         RESET="%{${reset_color}%}"
         GREEN="%{${fg[green]}%}"
@@ -37,29 +30,23 @@ case ${UID} in
         CYAN="%{${fg[cyan]}%}"
         WHITE="%{${fg[white]}%}"
 
-        #
         # Prompt
-        #
-        #PROMPT='%{$fg_bold[blue]%}${USER}  @%m ${RESET}${WHITE}$ ${RESET}'
-        PROMPT='%{$fg[white]$bg[blue]%} %m %{$fg[blue]$bg[white]%}⮀ ${USER} ${RESET}${WHITE}⮀ ${RESET}'
-        #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
-        #RPROMPT='${RESET}${WHITE}[${BLUE}%(5~,%-2~/.../%2~,%~)% ${WHITE}]${RESET}'
-
+        PROMPT='%{$fg[white]$bg[blue]%} %m %{$fg[blue]$bg[white]%}$DLH ${USER} ${RESET}${WHITE}$DLH ${RESET}'
 
 # VCS config
 
 ZSH_VCS_PROMPT_GIT_FORMATS=""
 ZSH_VCS_PROMPT_ACTION_GIT_FORMATS=""
 # VCS name
-ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
-ZSH_VCS_PROMPT_VCS_FORMATS="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
-ZSH_VCS_PROMPT_VCS_ACTION_FORMATS="%{$fg[blue]%}⮂%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_VCS_FORMATS="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+ZSH_VCS_PROMPT_VCS_ACTION_FORMATS="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
 # Branch name
-ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
-ZSH_VCS_PROMPT_VCS_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
-ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+="%{$fg[cyan]%}⮂%{$bg[cyan]$fg[black]%} ⭠ #b"
+ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+ZSH_VCS_PROMPT_VCS_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
 # Action
 ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
 ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
@@ -86,18 +73,18 @@ ZSH_VCS_PROMPT_GIT_FORMATS+='#j'
 ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#j'
 
 ## The symbols.
-ZSH_VCS_PROMPT_AHEAD_SIGIL=" %{$fg[white]%}⮂%{$bg[white]$fg[black]%}↑ "
-ZSH_VCS_PROMPT_BEHIND_SIGIL=" %{$fg[white]%}⮂%{$bg[white]$fg[black]%}↓ "
-ZSH_VCS_PROMPT_STAGED_SIGIL=" %{$fg[blue]%}⮂%{$bg[blue]$fg[white]%}● "
-ZSH_VCS_PROMPT_CONFLICTS_SIGIL=" %{$fg[red]%}⮂%{$bg[red]$fg[white]%}✖ "
-ZSH_VCS_PROMPT_UNSTAGED_SIGIL=" %{$fg[red]%}⮂%{$bg[red]$fg[white]%}✚ "
-ZSH_VCS_PROMPT_UNTRACKED_SIGIL=" %{$fg[magenta]%}⮂%{$bg[magenta]$fg[white]%}… "
-ZSH_VCS_PROMPT_STASHED_SIGIL=" %{$fg[blue]%}⮂%{$bg[blue]$fg[white]%}⚑ "
-ZSH_VCS_PROMPT_CLEAN_SIGIL=" %{$fg[green]%}⮂%{$bg[green]$fg[white]%}✔ "
+ZSH_VCS_PROMPT_AHEAD_SIGIL=" %{$fg[white]%}$DRH%{$bg[white]$fg[black]%}↑ "
+ZSH_VCS_PROMPT_BEHIND_SIGIL=" %{$fg[white]%}$DRH%{$bg[white]$fg[black]%}↓ "
+ZSH_VCS_PROMPT_STAGED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}● "
+ZSH_VCS_PROMPT_CONFLICTS_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✖ "
+ZSH_VCS_PROMPT_UNSTAGED_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✚ "
+ZSH_VCS_PROMPT_UNTRACKED_SIGIL=" %{$fg[magenta]%}$DRH%{$bg[magenta]$fg[white]%}… "
+ZSH_VCS_PROMPT_STASHED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}⚑ "
+ZSH_VCS_PROMPT_CLEAN_SIGIL=" %{$fg[green]%}$DRH%{$bg[green]$fg[white]%}✔ "
 
 source ~/dotfiles/zsh-vcs-prompt/zshrc.sh
 ZSH_VCS_PROMPT_ENABLE_CACHING='true'
-RPROMPT='$(vcs_super_info) %{$fg[white]%}⮂%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
+RPROMPT='$(vcs_super_info) %{$fg[white]%}$DRH%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
 ;;
 esac
@@ -194,8 +181,8 @@ bindkey '^S' history-incremental-pattern-search-forward
 
 ## Command history configuration
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 # 登録済コマンド行は古い方を削除
 setopt hist_ignore_all_dups
@@ -257,7 +244,7 @@ setopt NO_flow_control
 setopt path_dirs
 
 # 戻り値が 0 以外の場合終了コードを表示する
-# setopt print_exit_value
+#setopt print_exit_value
 
 # pushd を引数なしで実行した場合 pushd $HOME と見なされる
 #setopt pushd_to_home
@@ -276,15 +263,6 @@ setopt path_dirs
 
 # コマンドラインがどのように展開され実行されたかを表示するようになる
 #setopt xtrace
-
-# ^でcd ..する
-function cdup() {
-echo
-cd ..
-zle reset-prompt
-}
-zle -N cdup
-# bindkey '\^' cdup
 
 # ctrl-w, ctrl-bキーで単語移動
 bindkey "^W" forward-word
@@ -311,21 +289,12 @@ e_BLUE=`echo -e "\033[1;36m"`
 function make() {
 LANG=C command make -j4 "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_NORMAL@g" -e "s@cannot¥sfind.*@$e_RED&$e_NORMAL@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_NORMAL@g"
 }
-function cwaf() {
-LANG=C command ./waf "$@" 2>&1 | sed -e "s@[Ee]rror:.*@$e_RED&$e_NORMAL@g" -e "s@cannot¥sfind.*@$e_RED&$e_NORMAL@g" -e "s@[Ww]arning:.*@$e_BLUE&$e_NORMAL@g"
-}
 
 ## Completion configuration
 #
 fpath=(~/dotfiles/zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit -u
-
-
-## zsh editor
-#
-autoload zed
-
 
 ## Prediction configuration
 #
@@ -353,104 +322,16 @@ alias where="command -v"
 case "${OSTYPE}" in
     freebsd*|darwin*)
         alias ls="ls -alG"
-        zle -N expand-to-home-or-insert
-        bindkey "@"  expand-to-home-or-insert
         ;;
     linux*)
         alias la="ls -al"
         ;;
 esac
 
-
-case "${OSTYPE}" in
-    # MacOSX
-    darwin*)
-    #    export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
-    #    export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/
-    ;;
-freebsd*)
-    case ${UID} in
-        0)
-            updateports()
-            {
-                if [ -f /usr/ports/.portsnap.INDEX ]
-                then
-                    portsnap fetch update
-                else
-                    portsnap fetch extract update
-                fi
-                (cd /usr/ports/; make index)
-
-                portversion -v -l \<
-            }
-            alias appsupgrade='pkgdb -F && BATCH=YES NO_CHECKSUM=YES portupgrade -a'
-            ;;
-    esac
-    ;;
-esac
-
-
-## terminal configuration
-# http://journal.mycom.co.jp/column/zsh/009/index.html
-unset LSCOLORS
-
-case "${TERM}" in
-    xterm)
-        export TERM=xterm-color
-
-        ;;
-    kterm)
-        export TERM=kterm-color
-        # set BackSpace control character
-
-        stty erase
-        ;;
-
-    cons25)
-        unset LANG
-        export LSCOLORS=ExFxCxdxBxegedabagacad
-
-        export LS_COLORS='di=01;32:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30'
-        zstyle ':completion:*' list-colors \
-            'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-        ;;
-
-    kterm*|xterm*)
-        # Terminal.app
-        #    precmd() {
-        #        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-        #    }
-        # export LSCOLORS=exfxcxdxbxegedabagacad
-        # export LSCOLORS=gxfxcxdxbxegedabagacad
-        # export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30'
-
-        export CLICOLOR=1
-        export LSCOLORS=ExFxCxDxBxegedabagacad
-
-        zstyle ':completion:*' list-colors \
-            'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-        ;;
-
-    dumb)
-        echo "Welcome Emacs Shell"
-        ;;
-esac
-
+zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 export GREP_OPTIONS='--color=auto'
 export EDITOR=vim
-export PATH=$PATH:$HOME/local/bin:/usr/local/git/bin
-export PATH=$PATH:$HOME/dotfiles/bin
-export PATH=/sbin:/usr/local/bin:/usr/local/sbin:$PATH
-export MANPATH=$MANPATH:/opt/local/man:/usr/local/share/man
-export PATH=${HOME}/.cabal/bin:$PATH
-expand-to-home-or-insert () {
-    if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-        LBUFFER+="~/"
-    else
-        zle self-insert
-    fi
-}
 
 # C-M-h でチートシートを表示する
 cheat-sheet () { zle -M "`cat ~/dotfiles/zsh/cheat-sheet`" }
@@ -458,7 +339,6 @@ zle -N cheat-sheet
 # bindkey "^[^h" cheat-sheet
 
 # zsh の exntended_glob と HEAD^^^ を共存させる。
-# http://subtech.g.hatena.ne.jp/cho45/20080617/1213629154
 typeset -A abbreviations
 abbreviations=(
 "L"    "| $PAGER"
@@ -501,51 +381,10 @@ bindkey " "   magic-abbrev-expand-and-insert
 bindkey "."   magic-abbrev-expand-and-insert
 bindkey "^x " no-magic-abbrev-expand
 
-function rmf(){
-for file in $*
-do
-    __rm_single_file $file
-done
-}
-
-function __rm_single_file(){
-if ! [ -d ~/.Trash/ ]
-then
-    command /bin/mkdir ~/.Trash
-fi
-
-if ! [ $# -eq 1 ]
-then
-    echo "__rm_single_file: 1 argument required but $# passed."
-    exit
-fi
-
-if [ -e $1 ]
-then
-    BASENAME=`basename $1`
-    NAME=$BASENAME
-    COUNT=0
-    while [ -e ~/.Trash/$NAME ]
-    do
-        COUNT=$(($COUNT+1))
-        NAME="$BASENAME.$COUNT"
-    done
-
-    command /bin/mv $1 ~/.Trash/$NAME
-else
-    echo "No such file or directory: $file"
-fi
-}
-
 autoload -Uz compinit
 compinit
-source ~/dotfiles/zsh/cdd
 
-chpwd() {
-    _cdd_chpwd
-}
 ## alias設定
-#
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
 
 case "${OSTYPE}" in
@@ -561,8 +400,6 @@ case "${OSTYPE}" in
     ;;
 esac
 
-
 ## local固有設定
-#
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 

@@ -6,8 +6,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # z
-. `brew --prefix`/etc/profile.d/z.sh
-alias j=z
+. ~/dotfiles/z/z.sh
 
 # Java
 # export JAVA_HOME=/Library/Java/Home
@@ -37,7 +36,9 @@ if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
 fi
 
 #vim
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+if which /Applications/MacVim.app/Contents/MacOS/Vim > /dev/null; then 
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+fi
 
 #nvm
 if [ -f $(brew --prefix nvm)/nvm.sh ]; then

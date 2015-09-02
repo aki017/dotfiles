@@ -144,3 +144,6 @@ function peco-select-gitrm() {
     # zle clear-screen
 }
 alias gr="peco-select-gitrm"
+
+
+alias p='cd "$(ghq root)/$(ghq list -p | sed -e "s#$(ghq root)/##g" | peco)"'
