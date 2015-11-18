@@ -56,3 +56,5 @@ if which direnv > /dev/null; then
 fi
 
 alias c='convert -background "#1c1c1c" -fill "#c3c3c3" -font /Users/aki/Library/Fonts/SourceCodePro-Medium.otf label:@- "$@"'
+
+export GOPATH=$HOME/.go
