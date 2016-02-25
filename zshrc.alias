@@ -52,7 +52,6 @@ alias tml='tmux list-sessions'
 
 alias pon='predict-on'
 alias poff='predict-off'
-alias p='ping -c 4'
 
 #alias ls='ls -al'
 alias cp='nocorrect cp -irp'
@@ -120,30 +119,3 @@ alias 256="256.pl"
 #adb
 alias logcat="adb logcat -C"
 
-
-function peco-select-gitadd() {
-    local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
-                                  peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{print $NF}')"
-    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
-      git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')
-      echo "git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
-    fi
-}
-
-alias ga="peco-select-gitadd"
-
-function peco-select-gitrm() {
-    local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
-                                  peco --query "$LBUFFER" | \
-                                  awk -F ' ' '{print $NF}')"
-    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
-      git rm --cached $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')
-      echo "git rm --cached $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
-    fi
-    # zle clear-screen
-}
-alias gr="peco-select-gitrm"
-
-
-alias p='cd "$(ghq root)/$(ghq list -p | sed -e "s#$(ghq root)/##g" | peco)"'

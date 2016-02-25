@@ -1,3 +1,4 @@
+
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
 
@@ -31,59 +32,59 @@ case ${UID} in
         # Prompt
         PROMPT='%{$fg[white]$bg[blue]%} %m %{$fg[blue]$bg[white]%}$DLH ${USER} ${RESET}${WHITE}$DLH ${RESET}'
 
-# VCS config
+        # VCS config
 
-ZSH_VCS_PROMPT_GIT_FORMATS=""
-ZSH_VCS_PROMPT_ACTION_GIT_FORMATS=""
-# VCS name
-ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
-ZSH_VCS_PROMPT_VCS_FORMATS="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
-ZSH_VCS_PROMPT_VCS_ACTION_FORMATS="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
-# Branch name
-ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
-ZSH_VCS_PROMPT_VCS_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
-ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
-# Action
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
-ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
-# Ahead and Behind
-ZSH_VCS_PROMPT_GIT_FORMATS+='#c#d'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#c#d'
-# Staged
-ZSH_VCS_PROMPT_GIT_FORMATS+='#e'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#e'
-# Conflicts
-ZSH_VCS_PROMPT_GIT_FORMATS+='#f'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#f'
-# Unstaged
-ZSH_VCS_PROMPT_GIT_FORMATS+='#g'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#g'
-# Untracked
-ZSH_VCS_PROMPT_GIT_FORMATS+='#h'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#h'
-# Stashed
-ZSH_VCS_PROMPT_GIT_FORMATS+='#i'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#i'
-# Clean
-ZSH_VCS_PROMPT_GIT_FORMATS+='#j'
-ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#j'
+        ZSH_VCS_PROMPT_GIT_FORMATS=""
+        ZSH_VCS_PROMPT_ACTION_GIT_FORMATS=""
+        # VCS name
+        ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+        ZSH_VCS_PROMPT_VCS_FORMATS="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+        ZSH_VCS_PROMPT_VCS_ACTION_FORMATS="%{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%} #s "
+        # Branch name
+        ZSH_VCS_PROMPT_GIT_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+        ZSH_VCS_PROMPT_VCS_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+        ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+="%{$fg[cyan]%}$DRH%{$bg[cyan]$fg[black]%}  #b"
+        # Action
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
+        ZSH_VCS_PROMPT_VCS_ACTION_FORMATS+=':%{%B%F{red}%}#a%{%f%b%}'
+        # Ahead and Behind
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#c#d'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#c#d'
+        # Staged
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#e'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#e'
+        # Conflicts
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#f'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#f'
+        # Unstaged
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#g'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#g'
+        # Untracked
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#h'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#h'
+        # Stashed
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#i'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#i'
+        # Clean
+        ZSH_VCS_PROMPT_GIT_FORMATS+='#j'
+        ZSH_VCS_PROMPT_GIT_ACTION_FORMATS+='#j'
 
-## The symbols.
-ZSH_VCS_PROMPT_AHEAD_SIGIL=" %{$fg[white]%}$DRH%{$bg[white]$fg[black]%}↑ "
-ZSH_VCS_PROMPT_BEHIND_SIGIL=" %{$fg[white]%}$DRH%{$bg[white]$fg[black]%}↓ "
-ZSH_VCS_PROMPT_STAGED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}● "
-ZSH_VCS_PROMPT_CONFLICTS_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✖ "
-ZSH_VCS_PROMPT_UNSTAGED_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✚ "
-ZSH_VCS_PROMPT_UNTRACKED_SIGIL=" %{$fg[magenta]%}$DRH%{$bg[magenta]$fg[white]%}… "
-ZSH_VCS_PROMPT_STASHED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}⚑ "
-ZSH_VCS_PROMPT_CLEAN_SIGIL=" %{$fg[green]%}$DRH%{$bg[green]$fg[white]%}✔ "
-ZSH_VCS_PROMPT_ENABLE_CACHING='true'
-source ~/dotfiles/zsh-vcs-prompt/zshrc.sh
-RPROMPT='$(vcs_super_info) %{$fg[white]%}$DRH%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
+        ## The symbols.
+        ZSH_VCS_PROMPT_AHEAD_SIGIL=" %{$fg[white]%}$DRH%{$bg[white]$fg[black]%}↑ "
+        ZSH_VCS_PROMPT_BEHIND_SIGIL=" %{$fg[white]%}$DRH%{$bg[white]$fg[black]%}↓ "
+        ZSH_VCS_PROMPT_STAGED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}● "
+        ZSH_VCS_PROMPT_CONFLICTS_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✖ "
+        ZSH_VCS_PROMPT_UNSTAGED_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✚ "
+        ZSH_VCS_PROMPT_UNTRACKED_SIGIL=" %{$fg[magenta]%}$DRH%{$bg[magenta]$fg[white]%}… "
+        ZSH_VCS_PROMPT_STASHED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}⚑ "
+        ZSH_VCS_PROMPT_CLEAN_SIGIL=" %{$fg[green]%}$DRH%{$bg[green]$fg[white]%}✔ "
+        ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+        source ~/dotfiles/zsh-vcs-prompt/zshrc.sh
+        RPROMPT='$(vcs_super_info) %{$fg[white]%}$DRH%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
-;;
+        ;;
 esac
 
 # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
@@ -372,6 +373,11 @@ bindkey "^x " no-magic-abbrev-expand
 
 autoload -Uz compinit
 compinit
+
+# z
+. $HOME/dotfiles/z/z.sh
+
+[ -f ~/dotfiles/zshrc.peco ] && source ~/dotfiles/zshrc.peco
 
 ## alias設定
 [ -f ~/dotfiles/zshrc.alias ] && source ~/dotfiles/zshrc.alias
