@@ -13,7 +13,6 @@
   excludesfile = ~/dotfiles/gitignore
   editor = vim
   quotepath = false
-  pager = lv -c
   attributesfile = ~/dotfiles/gitattributes
 [merge]
   tool = vimdiff
@@ -38,3 +37,6 @@
 	required = true
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
+[pager]
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
