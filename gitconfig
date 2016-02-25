@@ -1,0 +1,40 @@
+[user]
+  name = aki017
+  email = aki@aki017.info
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+[push]
+  default = tracking       # defaultのpush先はtrackingしているリポジトリ
+[core]
+  excludesfile = ~/dotfiles/gitignore
+  editor = vim
+  quotepath = false
+  pager = lv -c
+  attributesfile = ~/dotfiles/gitattributes
+[merge]
+  tool = vimdiff
+[branch]
+  autosetuprebase = always
+
+[tig "bind"]
+  generic = g move-first-line
+  generic = G move-last-line
+  generic = <Ctrl-F> move-page-down
+  generic = <Ctrl-B> move-page-up
+
+[url "github:"]
+  pushInsteadOf = git://github.com/
+  pushInsteadOf = https://github.com/
+[url "git@github.com:"]
+  pushInsteadOf = git://github.com/
+  pushInsteadOf = https://github.com/
+[diff]
+	algorithm = histogram
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
