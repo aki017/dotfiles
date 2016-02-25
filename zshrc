@@ -14,11 +14,9 @@ export DRS=""
 
 case ${UID} in
     0)
-        PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-        PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
+        PROMPT="%B%{${fg[red]}%}%n%B@%m %#%{${reset_color}%}%b "
+        PROMPT2="%B%{${fg[red]}%}%n%B@%m -%{${reset_color}%}%b "
         SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-        [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-            PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
         ;;
     *)
         # Color
@@ -81,9 +79,8 @@ ZSH_VCS_PROMPT_UNSTAGED_SIGIL=" %{$fg[red]%}$DRH%{$bg[red]$fg[white]%}✚ "
 ZSH_VCS_PROMPT_UNTRACKED_SIGIL=" %{$fg[magenta]%}$DRH%{$bg[magenta]$fg[white]%}… "
 ZSH_VCS_PROMPT_STASHED_SIGIL=" %{$fg[blue]%}$DRH%{$bg[blue]$fg[white]%}⚑ "
 ZSH_VCS_PROMPT_CLEAN_SIGIL=" %{$fg[green]%}$DRH%{$bg[green]$fg[white]%}✔ "
-
-source ~/dotfiles/zsh-vcs-prompt/zshrc.sh
 ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+source ~/dotfiles/zsh-vcs-prompt/zshrc.sh
 RPROMPT='$(vcs_super_info) %{$fg[white]%}$DRH%{$bg[white]$fg[blue]%} %(5~,%-2~/.../%2~,%~)${WHITE}]${RESET}'
 
 ;;
@@ -333,17 +330,9 @@ zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 export GREP_OPTIONS='--color=auto'
 export EDITOR=vim
 
-# C-M-h でチートシートを表示する
-cheat-sheet () { zle -M "`cat ~/dotfiles/zsh/cheat-sheet`" }
-zle -N cheat-sheet
-# bindkey "^[^h" cheat-sheet
-
 # zsh の exntended_glob と HEAD^^^ を共存させる。
 typeset -A abbreviations
 abbreviations=(
-"L"    "| $PAGER"
-"G"    "| grep"
-
 "HEAD^"     "HEAD\\^"
 "HEAD^^"    "HEAD\\^\\^"
 "HEAD^^^"   "HEAD\\^\\^\\^"
