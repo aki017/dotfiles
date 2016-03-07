@@ -24,9 +24,6 @@ function peco-select-gitrm() {
 }
 alias gr="peco-select-gitrm"
 
-
-alias p='cd "$(ghq root)/$(ghq list -p | sed -e "s#$(ghq root)/##g" | peco)"'
-
 function peco-z-search
 {
   which peco z > /dev/null
@@ -39,3 +36,22 @@ function peco-z-search
   fi
 }
 alias j=peco-z-search
+
+
+
+
+function peco-ghq-look
+{
+  which peco z > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco and z"
+  fi
+
+  target=$(ghq list | cut -d"/" -f2- | peco)
+
+  if [ ! -z $target ]; then
+      echo $target
+      cd $(ghq list -e -p $target)
+  fi
+}
+alias p=peco-ghq-look
