@@ -2,8 +2,8 @@
 
 
 function safe_ln() {
-    if [ -e $2 ]; then
-        mv $2 $2.old
+    if [ -h $2 ]; then
+	rm $2
     fi
     ln -s $1 $2
 }
