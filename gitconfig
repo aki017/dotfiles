@@ -8,7 +8,7 @@
   interactive = auto
   grep = auto
 [push]
-  default = tracking       # defaultのpush先はtrackingしているリポジトリ
+  default = tracking
 [core]
   excludesfile = ~/dotfiles/gitignore
   editor = vim
@@ -18,16 +18,11 @@
   tool = vimdiff
 [branch]
   autosetuprebase = always
-
 [tig "bind"]
   generic = g move-first-line
   generic = G move-last-line
   generic = <Ctrl-F> move-page-down
   generic = <Ctrl-B> move-page-up
-
-[url "github:"]
-  pushInsteadOf = git://github.com/
-  pushInsteadOf = https://github.com/
 [url "git@github.com:"]
   pushInsteadOf = git://github.com/
   pushInsteadOf = https://github.com/
@@ -41,7 +36,6 @@
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
 [ghq]
-	root = ~/.ghq
-	root = ~/.go/src
+	root = ~/repo
 [alias]
 	co = checkout

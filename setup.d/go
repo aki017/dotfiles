@@ -1,0 +1,8 @@
+install() {
+  wget https://storage.googleapis.com/golang/go$GOVERSION.linux-amd64.tar.gz
+  mkdir -p $GOROOT/../
+  tar -C $GOROOT/../ -xzf go$GOVERSION.linux-amd64.tar.gz 
+  rm -r go$GOVERSION.linux-amd64.tar.gz
+}
+[ ! -f $GOROOT/bin/go ] && install
+$GOROOT/bin/go version | grep $GOVERSION > /dev/null || install

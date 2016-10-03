@@ -1,0 +1,2 @@
+ghq get erikw/tmux-powerline
+cd $HOME && rm -f .tmux-powerlinerc && ln -s $HOME/repo/github.com/aki017/dotfiles/tmux-powerline-setting/tmux-powerlinerc ./.tmux-powerlinerc

@@ -1,0 +1,2 @@
+ghq get junegunn/fzf
+$HOME/repo/github.com/junegunn/fzf/install --bin
