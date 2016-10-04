@@ -16,3 +16,4 @@ $ROOT/setup.d/tpm
 $ROOT/setup.d/tmux-powerline
 $ROOT/setup.d/z
 $ROOT/setup.d/vim
+$ROOT/setup.d/jq

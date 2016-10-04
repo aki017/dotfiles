@@ -1,0 +1,10 @@
+#! /bin/bash
+
+
+install () {
+  cd $HOME/local/bin
+  wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
+  chmod a+x jq
+}
+
+[ ! -f $HOME/local/bin/jq ] && install

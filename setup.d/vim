@@ -1,4 +1,9 @@
 #! /bin/bash
 
+ghq get aki017/vimrc
 ghq get Shougo/dein.vim
-
+cd $HOME
+mkdir -p .config
+cd .config
+rm -f ./nvim/init.vim
+ln -s $HOME/repo/github.com/aki017/vimrc/init.vim ./nvim/init.vim
