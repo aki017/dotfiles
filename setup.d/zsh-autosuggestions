@@ -1,0 +1,3 @@
+#! /bin/bash
+
+ghq get zsh-users/zsh-autosuggestions

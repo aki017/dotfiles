@@ -1,0 +1,4 @@
+#! /bin/bash
+
+ghq get Shougo/dein.vim
+
