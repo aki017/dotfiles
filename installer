@@ -1,0 +1,2 @@
+git clone git@github.com:aki017/dotfiles ~/repo/github.com/aki017/dotfiles
+exec ./repo/github.com/aki017/dotfiles/setup

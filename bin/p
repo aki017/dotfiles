@@ -1,9 +1,0 @@
-#! /bin/sh
-
-target=$(ghq list | cut -d"/" -f2- | peco)
-
-if [ ! -z $target ]; then
-    echo $target
-    cd $(ghq list -p $target)
-fi
-

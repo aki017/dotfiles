@@ -1,2 +1,3 @@
-git config --global include.path "$HOME/repo/github.com/aki017/dotfiles/gitconfig"
+#! /bin/bash
 
+git config --global include.path "$HOME/repo/github.com/aki017/dotfiles/gitconfig"

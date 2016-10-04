@@ -1,1 +1,3 @@
+#! /bin/bash
+
 ghq get rupa/z

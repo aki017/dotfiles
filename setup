@@ -1,0 +1,16 @@
+#!/bin/bash
+
+git clone git@github.com:aki017/zshrc $HOME/repo/github.com/aki017/zshrc
+ROOT=$HOME/repo/github.com/aki017/dotfiles
+mkdir -p $HOME/local/src
+$ROOT/setup.d/git
+$ROOT/setup.d/go
+$ROOT/setup.d/zsh
+$ROOT/setup.d/zsh-vcs-prompt
+$ROOT/setup.d/ghq
+$ROOT/setup.d/diff-so-fancy
+$ROOT/setup.d/fzf
+$ROOT/setup.d/tmux
+$ROOT/setup.d/tpm
+$ROOT/setup.d/tmux-powerline
+$ROOT/setup.d/z

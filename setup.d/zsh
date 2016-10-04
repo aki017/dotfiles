@@ -1,3 +1,5 @@
+#! /bin/bash
+
 install () {
   cd $HOME/local
   [ ! -f zsh-5.2.tar.gz ] && wget https://downloads.sourceforge.net/project/zsh/zsh/5.2/zsh-5.2.tar.gz
@@ -9,5 +11,11 @@ install () {
 }
 
 [ ! -f /usr/local/bin/zsh ] && install
+
+if ! grep "/usr/local/bin/zsh" /etc/shells >/dev/null ; then
+  echo "append zsh to /etc/shells"
+  echo /usr/local/bin/zsh | sudo tee -a /etc/shells
+fi
+sudo chsh -s /usr/local/bin/zsh
 cd $HOME && rm -f .zshrc && ln -s $HOME/repo/github.com/aki017/zshrc/zsh ./.zshrc
 cd $HOME && rm -f .zshenv && ln -s $HOME/repo/github.com/aki017/zshrc/zshenv ./.zshenv
