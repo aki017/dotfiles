@@ -10,10 +10,10 @@
 [push]
   default = tracking
 [core]
-  excludesfile = ~/dotfiles/gitignore
+  excludesfile = ~/repo/github.com/aki017/dotfiles/gitignore
   editor = vim
   quotepath = false
-  attributesfile = ~/dotfiles/gitattributes
+  attributesfile = ~/repo/github.com/aki017/dotfiles/gitattributes
 [merge]
   tool = vimdiff
 [branch]

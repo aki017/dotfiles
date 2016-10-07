@@ -19,3 +19,4 @@ fi
 [ "$SHELL" != "/usr/local/bin/zsh" ] && chsh -s /usr/local/bin/zsh
 cd $HOME && rm -f .zshrc && ln -s $HOME/repo/github.com/aki017/zshrc/zsh ./.zshrc
 cd $HOME && rm -f .zshenv && ln -s $HOME/repo/github.com/aki017/zshrc/zshenv ./.zshenv
+ghq get zsh-users/zsh-syntax-highlighting 
