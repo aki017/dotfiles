@@ -4,7 +4,12 @@ install () {
   if [ "$(uname)" == 'Darwin' ]; then
     brew install tig
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    echo "Your platform ($(uname -a)) is not supported."
+    ghq get -u jonas/tig
+    cd $HOME/repo/github.com/jonas/tig
+    ./autogen.sh
+    ./configure --prefix=$HOME/local
+    make
+    make install
   else
     echo "Your platform ($(uname -a)) is not supported."
     exit 1

@@ -1,0 +1,10 @@
+#! /bin/bash
+
+if type apt >/dev/null 2>&1; then
+  sudo apt install -y make
+  sudo apt install -y clang
+  sudo apt install -y binutils
+  sudo apt install -y automake
+  sudo apt install -y libncurses-dev
+  sudo apt install -y libncursesw5-dev
+fi

@@ -4,7 +4,7 @@ install () {
   if [ "$(uname)" == 'Darwin' ]; then
     brew install zsh
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    cd $HOME/local
+    cd $HOME/local/src
     [ ! -f zsh-5.2.tar.gz ] && wget https://downloads.sourceforge.net/project/zsh/zsh/5.2/zsh-5.2.tar.gz
     tar -zxf zsh-5.2.tar.gz
     cd zsh-5.2

@@ -6,6 +6,10 @@ install () {
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     OS='linux'
 
+    if type apt >/dev/null 2>&1; then
+      sudo apt install -y libevent-dev
+    fi
+
     cd $HOME/local/src
     [ ! -f tmux-2.3.tar.gz ] && wget https://github.com/tmux/tmux/releases/download/2.3/tmux-2.3.tar.gz
     tar -zxf tmux-2.3.tar.gz
@@ -20,4 +24,5 @@ install () {
 }
 
 command -v tmux >/dev/null 2>&1 || install
+tmux -V | grep 2.3 2>&1 >/dev/null || install
 cd $HOME && rm -f .tmux.conf && ln -s $HOME/repo/github.com/aki017/dotfiles/tmux.conf ./.tmux.conf

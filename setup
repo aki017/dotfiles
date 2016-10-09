@@ -1,8 +1,11 @@
 #!/bin/bash -x
 
 git clone git@github.com:aki017/zshrc $HOME/repo/github.com/aki017/zshrc
+source $HOME/repo/github.com/aki017/zshrc/zshenv
 ROOT=$HOME/repo/github.com/aki017/dotfiles
 mkdir -p $HOME/local/src
+mkdir -p $HOME/local/bin
+$ROOT/setup.d/base
 $ROOT/setup.d/git
 $ROOT/setup.d/go
 $ROOT/setup.d/ghq
