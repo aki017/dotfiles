@@ -1,3 +1,3 @@
 #! /bin/bash
 
-ghq get rupa/z
+ghq get -u rupa/z

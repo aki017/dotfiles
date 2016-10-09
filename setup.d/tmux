@@ -1,13 +1,23 @@
 #! /bin/bash
 
 install () {
-  cd $HOME/local/src
-  [ ! -f tmux-2.3.tar.gz ] && wget https://github.com/tmux/tmux/releases/download/2.3/tmux-2.3.tar.gz
-  tar -zxf tmux-2.3.tar.gz
-  cd tmux-2.3
-  ./configure --prefix=/usr/local
-  make
-  sudo make install
+  if [ "$(uname)" == 'Darwin' ]; then
+    brew install tmux
+  elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    OS='linux'
+
+    cd $HOME/local/src
+    [ ! -f tmux-2.3.tar.gz ] && wget https://github.com/tmux/tmux/releases/download/2.3/tmux-2.3.tar.gz
+    tar -zxf tmux-2.3.tar.gz
+    cd tmux-2.3
+    ./configure --prefix=/usr/local
+    make
+    sudo make install
+  else
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
+  fi
 }
-[ ! -f /usr/local/bin/tmux ] && install
+
+command -v tmux >/dev/null 2>&1 || install
 cd $HOME && rm -f .tmux.conf && ln -s $HOME/repo/github.com/aki017/dotfiles/tmux.conf ./.tmux.conf

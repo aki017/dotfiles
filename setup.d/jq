@@ -2,9 +2,17 @@
 
 
 install () {
-  cd $HOME/local/bin
-  wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
-  chmod a+x jq
+  if [ "$(uname)" == 'Darwin' ]; then
+    brew install jq
+  elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    cd $HOME/local/bin
+    wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
+    chmod a+x jq
+  else
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
+  fi
+
 }
 
-[ ! -f $HOME/local/bin/jq ] && install
+command -v jq >/dev/null 2>&1 || install

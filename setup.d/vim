@@ -1,9 +1,19 @@
 #! /bin/bash
 
-ghq get aki017/vimrc
-ghq get Shougo/dein.vim
+install() {
+
+  if [ "$(uname)" == 'Darwin' ]; then
+    brew install neovim/neovim/neovim
+  elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    echo "not supported"
+  fi
+}
+command -v foo >/dev/null 2>&1 || install
+ghq get -u aki017/vimrc
+ghq get -u Shougo/dein.vim
 cd $HOME
-mkdir -p .config
+ln -s $HOME/repo/github.com/aki017/vimrc/init.vim ./.vimrc
+mkdir -p .config/nvim
 cd .config
 rm -f ./nvim/init.vim
 ln -s $HOME/repo/github.com/aki017/vimrc/init.vim ./nvim/init.vim

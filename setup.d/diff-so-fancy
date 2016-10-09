@@ -1,4 +1,5 @@
 #! /bin/bash
-[ ! -f $HOME/repo/github.com/so-fancy/diff-so-fancy/diff-so-fancy ] && ghq get so-fancy/diff-so-fancy
+
+ghq get -u so-fancy/diff-so-fancy
 rm -f $HOME/local/bin/diff-so-fancy && ln -s $HOME/repo/github.com/so-fancy/diff-so-fancy/diff-so-fancy $HOME/local/bin/diff-so-fancy
 

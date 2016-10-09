@@ -3,10 +3,19 @@
 source $HOME/repo/github.com/aki017/zshrc/go
 
 install() {
-  wget https://storage.googleapis.com/golang/go$GOVERSION.linux-amd64.tar.gz
+  if [ "$(uname)" == 'Darwin' ]; then
+    OS='darwin'
+  elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    OS='linux'
+  else
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
+  fi
+
+  wget https://storage.googleapis.com/golang/go$GOVERSION.$OS-amd64.tar.gz
   mkdir -p $GOROOT/../
-  tar -C $GOROOT/../ -xzf go$GOVERSION.linux-amd64.tar.gz 
-  rm -r go$GOVERSION.linux-amd64.tar.gz
+  tar -C $GOROOT/../ -xzf go$GOVERSION.$OS-amd64.tar.gz 
+  rm -r go$GOVERSION.$OS-amd64.tar.gz
 }
 [ ! -f $GOROOT/bin/go ] && install
 $GOROOT/bin/go version | grep $GOVERSION > /dev/null || install
