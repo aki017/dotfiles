@@ -1,0 +1,14 @@
+#! /bin/bash
+
+install () {
+  if [ "$(uname)" == 'Darwin' ]; then
+    brew install tig
+  elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    echo "Your platform ($(uname -a)) is not supported."
+  else
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
+  fi
+}
+
+command -v tig >/dev/null 2>&1 || install
