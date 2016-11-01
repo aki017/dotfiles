@@ -31,7 +31,7 @@
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	smudge = git-lfs smudge --skip %f
 [pager]
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
