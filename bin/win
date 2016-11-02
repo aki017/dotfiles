@@ -1,0 +1,4 @@
+#! /bin/sh
+base="$HOME/repo/github.com/aki017/wsl-utils"
+BUNDLE_GEMFILE=$base/Gemfile bundle exec ruby $base/main.rb $@
+# ruby $base/main.rb $@

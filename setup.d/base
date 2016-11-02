@@ -11,4 +11,8 @@ if type apt >/dev/null 2>&1; then
   apt-install libncurses-dev
   apt-install libncursesw5-dev
   apt-install libevent-dev
+  # ruby
+  apt-install libssl-dev
+  apt-install libreadline-dev
+  apt-install zlib1g-dev
 fi

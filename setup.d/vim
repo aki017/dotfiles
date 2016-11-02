@@ -1,17 +1,25 @@
 #! /bin/bash
 
 install() {
-
   if [ "$(uname)" == 'Darwin' ]; then
     brew install neovim/neovim/neovim
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    echo "not supported"
+    if ! [ command -v add-apt-repository >/dev/null 2>&1 ]; then
+      sudo add-apt-repository ppa:neovim-ppa/unstable
+      sudo apt update
+      sudo apt install -y neovim python-dev python-pip python3-dev python3-pip
+      pip3 install neovim
+      sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+      sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+      sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+    fi
   fi
 }
-command -v foo >/dev/null 2>&1 || install
+command -v nvim >/dev/null 2>&1 || install
 ghq get -u aki017/vimrc
 ghq get -u Shougo/dein.vim
 cd $HOME
+rm -f ./.vimrc
 ln -s $HOME/repo/github.com/aki017/vimrc/init.vim ./.vimrc
 mkdir -p .config/nvim
 cd .config
