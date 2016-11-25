@@ -28,10 +28,14 @@
   pushInsteadOf = https://github.com/
 [diff]
 	algorithm = histogram
+[diff "json"]
+	textconv = "jp / "
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge --skip %f
+[diff "xxd"]
+  textconv = xxd
 [pager]
 	diff = diff-so-fancy | less --tabs=4 -RFX
 	show = diff-so-fancy | less --tabs=4 -RFX
