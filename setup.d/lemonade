@@ -1,3 +1,11 @@
 #! /bin/bash
 
+grep -q "Microsoft" /proc/version || exit
 go get -u github.com/pocke/lemonade
+
+cd "/mnt/c/Users/aki/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/"
+wget https://github.com/pocke/lemonade/releases/download/v1.1.1/lemonade_windows_amd64.zip
+rm -f lemonade.exe
+unzip lemonade_windows_amd64.zip
+rm lemonade_windows_amd64.zip
+
