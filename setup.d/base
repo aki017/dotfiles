@@ -1,13 +1,16 @@
 #! /bin/bash
 
 apt-install () {
-  dpkg -l $1 >/dev/null 2>&1 || sudo apt install -y $1
+  dpkg-query -f '${Status}' -W $1 | grep -E '^(install|hold) ok installed$' || sudo apt install -y $1
 }
 
 if type apt >/dev/null 2>&1; then
+  apt-install build-essential
   apt-install gcc
   apt-install make
   apt-install automake
+  apt-install autoconf
+  apt-install pkg-config
   apt-install libncurses-dev
   apt-install libncursesw5-dev
   apt-install libevent-dev
