@@ -18,4 +18,6 @@ if type apt >/dev/null 2>&1; then
   apt-install libssl-dev
   apt-install libreadline-dev
   apt-install zlib1g-dev
+
+  apt-install silversearcher-ag
 fi
