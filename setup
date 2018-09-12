@@ -22,3 +22,5 @@ $ROOT/setup.d/vim
 $ROOT/setup.d/jq
 $ROOT/setup.d/tig
 $ROOT/setup.d/lemonade
+$ROOT/setup.d/gron
+

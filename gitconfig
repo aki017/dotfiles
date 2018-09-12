@@ -29,7 +29,7 @@
 [diff]
 	algorithm = histogram
 [diff "json"]
-	textconv = "jp / "
+	textconv = "gron"
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean %f

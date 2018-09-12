@@ -6,7 +6,9 @@ install () {
     brew install jq
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     cd $HOME/local/bin
-    wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
+    rm jq
+    url=$(ruby -e "require 'open-uri';require 'json';puts JSON.parse(open('https://api.github.com/repos/stedolan/jq/releases/latest').read)['assets'].select{|n| n['name']=='jq-linux64'}.first['url']")
+    curl -L -H 'Accept: application/octet-stream' $url -O jq
     chmod a+x jq
   else
     echo "Your platform ($(uname -a)) is not supported."

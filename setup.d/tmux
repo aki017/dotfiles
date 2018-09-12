@@ -11,9 +11,9 @@ install () {
     fi
 
     cd $HOME/local/src
-    [ ! -f tmux-2.6.tar.gz ] && wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-    tar -zxf tmux-2.6.tar.gz
-    cd tmux-2.6
+    [ ! -f tmux-2.7.tar.gz ] && wget https://github.com/tmux/tmux/releases/download/2.7/tmux-2.7.tar.gz
+    tar -zxf tmux-2.7.tar.gz
+    cd tmux-2.7
     ./configure --prefix=/usr/local
     make
     sudo make install
@@ -24,5 +24,5 @@ install () {
 }
 
 command -v tmux >/dev/null 2>&1 || install
-tmux -V | grep 2.6 2>&1 >/dev/null || install
+tmux -V | grep 2.7 2>&1 >/dev/null || install
 cd $HOME && rm -f .tmux.conf && ln -s $HOME/repo/github.com/aki017/dotfiles/tmux.conf ./.tmux.conf
