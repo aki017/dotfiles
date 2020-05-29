@@ -1,0 +1,7 @@
+#! /bin/bash
+
+VERSION="0.1.1"
+FILE="git-delta_${VERSION}_amd64.deb"
+wget -O ~/local/src/$FILE https://github.com/dandavison/delta/releases/download/${VERSION}/${FILE}
+sudo dpkg -i ~/local/src/$FILE
+

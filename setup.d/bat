@@ -1,0 +1,7 @@
+#! /bin/bash
+
+VERSION="0.15.4"
+FILE="bat_${VERSION}_amd64.deb"
+wget -O ~/local/src/$FILE https://github.com/sharkdp/bat/releases/download/v${VERSION}/${FILE}
+sudo dpkg -i ~/local/src/$FILE
+

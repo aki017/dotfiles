@@ -5,9 +5,9 @@ install () {
     brew install zsh
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     cd $HOME/local/src
-    [ ! -f zsh-5.5.1.tar.gz ] && wget https://downloads.sourceforge.net/project/zsh/zsh/5.5.1/zsh-5.5.1.tar.gz
-    tar -zxf zsh-5.5.1.tar.gz
-    cd zsh-5.5.1
+    [ ! -f zsh-5.8.tar.xz ] && wget https://downloads.sourceforge.net/project/zsh/zsh/5.8/zsh-5.8.tar.xz
+    tar -xf zsh-5.8.tar.xz
+    cd zsh-5.8
     ./configure --prefix=/usr/local --enable-cap --enable-maildir-support --enable-multibyte --enable-pcre
     make -j8
     sudo make install
