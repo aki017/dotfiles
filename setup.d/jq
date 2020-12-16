@@ -8,7 +8,7 @@ install () {
     cd $HOME/local/bin
     rm jq
     url=$(ruby -e "require 'open-uri';require 'json';puts JSON.parse(open('https://api.github.com/repos/stedolan/jq/releases/latest').read)['assets'].select{|n| n['name']=='jq-linux64'}.first['url']")
-    curl -L -H 'Accept: application/octet-stream' $url -O jq
+    curl -L -H 'Accept: application/octet-stream' $url -o jq
     chmod a+x jq
   else
     echo "Your platform ($(uname -a)) is not supported."
